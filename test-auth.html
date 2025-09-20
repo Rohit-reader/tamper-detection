@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Firebase Auth</title>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            // Replace with your Firebase config
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Test functions
+        window.testSignUp = async () => {
+            const email = prompt('Enter email:');
+            const password = prompt('Enter password:');
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                console.log('User created:', userCredential.user);
+                alert('User created successfully!');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+            }
+        };
+
+        window.testSignIn = async () => {
+            const email = prompt('Enter email:');
+            const password = prompt('Enter password:');
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                console.log('User signed in:', userCredential.user);
+                alert('Signed in successfully!');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+            }
+        };
+
+        window.testSignOut = async () => {
+            try {
+                await signOut(auth);
+                console.log('User signed out');
+                alert('Signed out successfully!');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+            }
+        };
+
+        // Check auth state
+        onAuthStateChanged(auth, (user) => {
+            console.log('Auth state changed:', user ? 'User is signed in' : 'User is signed out');
+            document.getElementById('authState').textContent = 
+                user ? `User is signed in: ${user.email}` : 'User is signed out';
+        });
+    </script>
+</head>
+<body>
+    <h1>Firebase Auth Test</h1>
+    <div>
+        <button onclick="testSignUp()">Test Sign Up</button>
+        <button onclick="testSignIn()">Test Sign In</button>
+        <button onclick="testSignOut()">Test Sign Out</button>
+    </div>
+    <div id="authState" style="margin-top: 20px; font-weight: bold;">Checking auth state...</div>
+    <div style="margin-top: 20px;">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click "Test Sign Up" to create a new user</li>
+            <li>Click "Test Sign In" to sign in with an existing user</li>
+            <li>Click "Test Sign Out" to sign out</li>
+            <li>Check the console for detailed logs</li>
+        </ol>
+        <p>Make sure to replace the Firebase configuration in the script with your own.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+[
+  { 
+    "deviceId": "scale_01", 
+    "status": "Hash Mismatch", 
+    "timestamp": "2025-09-20T12:30:00Z", 
+    "location": { "lat": 28.61, "lng": 77.23 } 
+  },
+  { 
+    "deviceId": "pump_07", 
+    "status": "Firmware Changed", 
+    "timestamp": "2025-09-20T12:45:00Z", 
+    "location": { "lat": 19.07, "lng": 72.87 } 
+  },
+  { 
+    "deviceId": "scale_02", 
+    "status": "Tamper Detected", 
+    "timestamp": "2025-09-20T13:15:00Z", 
+    "location": { "lat": 13.08, "lng": 80.27 } 
+  },
+  { 
+    "deviceId": "pump_12", 
+    "status": "Normal", 
+    "timestamp": "2025-09-20T14:20:00Z", 
+    "location": { "lat": 12.97, "lng": 77.59 } 
+  },
+  { 
+    "deviceId": "scale_05", 
+    "status": "Hash Mismatch", 
+    "timestamp": "2025-09-20T15:30:00Z", 
+    "location": { "lat": 17.38, "lng": 78.48 } 
+  },
+  { 
+    "deviceId": "pump_03", 
+    "status": "Firmware Changed", 
+    "timestamp": "2025-09-20T16:45:00Z", 
+    "location": { "lat": 22.57, "lng": 88.36 } 
+  },
+  { 
+    "deviceId": "scale_08", 
+    "status": "Normal", 
+    "timestamp": "2025-09-20T17:10:00Z", 
+    "location": { "lat": 26.85, "lng": 80.95 } 
+  },
+  { 
+    "deviceId": "pump_15", 
+    "status": "Tamper Detected", 
+    "timestamp": "2025-09-20T18:20:00Z", 
+    "location": { "lat": 23.26, "lng": 77.41 } 
+  }
+]

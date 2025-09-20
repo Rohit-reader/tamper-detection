@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamper Detection - Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Tamper Detection</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="report.html">Reports</a>
+                    </li>
+                </ul>
+                <div class="text-white me-3" id="user-info"></div>
+                <button class="btn btn-outline-light" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+        <!-- Status Bar -->
+        <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded-3 shadow-sm">
+            <div>
+                <h2 class="mb-0 text-primary">Legal Meterology Department</h2>
+                <p class="text-muted mb-0">Tamper Detection System</p>
+            </div>
+            <div class="text-end">
+                <div id="connection-status" class="d-inline-block me-3">
+                    <span class="badge bg-secondary">Hardware: Disconnected</span>
+                </div>
+                <div id="last-update" class="text-muted small">Last updated: --:--:--</div>
+            </div>
+        </div>
+        
+        <!-- Hardware Messages -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0 pt-3">
+                        <h5 class="card-title mb-0">Hardware Messages</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Device ID</th>
+                                        <th>Message Type</th>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hardwareMessages">
+                                    <!-- Hardware messages will be dynamically inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./js/dashboard.js" type="module"></script>
+</body>
+</html>

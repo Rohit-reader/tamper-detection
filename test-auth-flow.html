@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Flow Test</title>
+    <script type="module">
+        import { authFunctions } from './js/firebase-config.js';
+        const { auth, onAuthStateChanged } = authFunctions;
+
+        // Log auth state changes
+        onAuthStateChanged(auth, (user) => {
+            console.log('Auth state changed:', user ? 'User signed in' : 'No user');
+            if (user) {
+                console.log('User UID:', user.uid);
+                console.log('Session storage role:', sessionStorage.getItem('userRole'));
+                console.log('Session storage email:', sessionStorage.getItem('userEmail'));
+            }
+        });
+
+        // Check current auth state
+        console.log('Current auth state:', auth.currentUser);
+        console.log('Session storage:', {
+            userRole: sessionStorage.getItem('userRole'),
+            userEmail: sessionStorage.getItem('userEmail')
+        });
+
+        // Redirect to login if not authenticated
+        if (!auth.currentUser) {
+            console.log('No user, redirecting to login...');
+            window.location.href = './index.html';
+        }
+    </script>
+</head>
+<body>
+    <h1>Auth Flow Test</h1>
+    <p>Check the browser console for authentication details.</p>
+    <button onclick="window.location.href='./index.html'">Go to Login</button>
+    <button onclick="window.location.href='./dashboard.html'">Go to Dashboard</button>
+</body>
+</html>
